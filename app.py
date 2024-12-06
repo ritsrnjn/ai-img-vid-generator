@@ -1,7 +1,10 @@
 from flask import Flask, request, jsonify
 from onlycalls import create_generic_image, onlycalls_create_character_image
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/create-image', methods=['POST'])
 def create_image():
@@ -12,7 +15,6 @@ def create_image():
 
     image_url = create_generic_image(initial_prompt)
     return jsonify({"url": image_url})
-
 
 
 @app.route('/create-character-image', methods=['POST'])
@@ -26,7 +28,6 @@ def create_character_image():
 
     character = character.lower()
 
-    # if character not in ["brett", "ponke", "pepe"]: return error
     if character not in ["brett", "ponke", "pepe"]:
         return jsonify({"error": "Invalid character, please choose from [brett, ponke, pepe]"}), 400
 
@@ -35,4 +36,4 @@ def create_character_image():
     return jsonify({"url": image_url})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
