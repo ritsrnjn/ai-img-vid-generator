@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
 from onlycalls import create_generic_image, onlycalls_create_character_image
 from flask_cors import CORS
+from dotenv import load_dotenv
 import os
 
+load_dotenv() 
 
 app = Flask(__name__)
 CORS(app)
@@ -56,4 +58,5 @@ def create_character_image():
     return jsonify({"url": image_url})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+   port = int(os.getenv('PORT', 5000))  # Default to 5000 if not found
+   app.run(host='0.0.0.0', port=port, debug=True)
