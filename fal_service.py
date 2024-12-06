@@ -63,14 +63,7 @@ def generate_image_with_lora(prompt, lora_path):
         return f"Error generating image: {str(e)}"
 
 
-
-
-# Character LoRA configurations
-BRETT_LORA_PATH = "https://storage.googleapis.com/fal-flux-lora/bb6ec5438d5c4ca7897cbf0df40fb051_pytorch_lora_weights.safetensors"
-PEPE_LORA_PATH = "https://v3.fal.media/files/zebra/Ty7OLVtSbSA7RHor8B-Kp_pytorch_lora_weights.safetensors"
-PONKE_LORA_PATH = "https://v3.fal.media/files/tiger/AmoMe4SZjfGXkbe3W0DaP_pytorch_lora_weights.safetensors"
-
-def generate_image_with_multiple_loras(prompt):
+def generate_image_with_multiple_loras(prompt, lora_path_a, lora_path_b):
     try:
         # Make the API call with multiple Lora configurations
         result = fal_client.subscribe(
@@ -79,15 +72,11 @@ def generate_image_with_multiple_loras(prompt):
                 "prompt": prompt,
                 "loras": [
                     {
-                        "path": BRETT_LORA_PATH,
+                        "path": lora_path_a,
                         "scale": 1
                     },
-                    # {
-                    #     "path": PEPE_LORA_PATH,
-                    #     "scale": 1
-                    # },
                     {
-                        "path": PONKE_LORA_PATH,
+                        "path": lora_path_b,
                         "scale": 1
                     }
                 ],
