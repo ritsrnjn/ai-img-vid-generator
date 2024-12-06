@@ -28,10 +28,10 @@ def create_character_image_prompt(initial_prompt, trigger_word):
     prompt = f"""You are an expert image prompt creator. A user has provided this initial prompt: '{initial_prompt}'
 
     Task: Create a detailed image prompt that:
-    - Incorporates the trigger word "{trigger_word}"
+    - Incorporates the character "{trigger_word}", the image should be about this character specifically
     - Describes a scene with the character doing something specific
     - Adds rich narrative and visual details
-    - Ensures the trigger word is naturally integrated into the scene
+    - Chooses a distinctive artistic style (cyberpunk, retro, digital art, etc.)
 
     Output ONLY the final, character-focused image prompt - no additional text."""
 
