@@ -18,18 +18,6 @@ CHARACTER_CONFIGS = {
 
 
 def get_character_config(character):
-    """
-    Retrieve configuration for a specific character.
-
-    Args:
-        character (str): Name of the character (case-insensitive)
-
-    Returns:
-        dict: Character configuration
-
-    Raises:
-        ValueError: If character is not found
-    """
     config = CHARACTER_CONFIGS.get(character.lower())
     if not config:
         raise ValueError(f"Unsupported character: {character}")
